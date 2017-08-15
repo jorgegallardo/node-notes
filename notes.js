@@ -1,4 +1,3 @@
-console.log("Starting notes.js");
 const fs = require('fs');
 
 var fetchNotes = () => {
@@ -39,7 +38,9 @@ var getAll = () => {
 };
 
 var getNote = (title) => {
-  console.log('Retrieving', title + '.')
+  var notes = fetchNotes();
+  var noteToReturn = notes.filter((note) => note.title === title);
+  return noteToReturn[0]; //will return undefined if the note isn't found
 };
 
 var removeNote = (title) => {

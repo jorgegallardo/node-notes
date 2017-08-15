@@ -1,5 +1,3 @@
-console.log("Starting Node Notes.")
-
 const fs = require('fs');
 const _ = require('lodash');
 const yargs = require('yargs');
@@ -8,9 +6,9 @@ const notes = require('./notes.js');
 
 const argv = yargs.argv
 var command = argv._[0];
-console.log('Command:',command);
-console.log('Process:', process.argv);
-console.log('Yargs:', argv);
+// console.log('Command:',command);
+// console.log('Process:', process.argv);
+// console.log('Yargs:', argv);
 
 switch(command) {
   case 'add':
@@ -27,7 +25,8 @@ switch(command) {
     notes.getAll();
     break;
   case 'read':
-    notes.getNote(argv.title);
+    var readNote = notes.getNote(argv.title);
+    console.log(readNote ? `${readNote.body}` : 'The note was not found.');
     break;
   case 'remove':
     var noteRemoved = notes.removeNote(argv.title);
