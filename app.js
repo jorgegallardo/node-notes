@@ -14,7 +14,14 @@ console.log('Yargs:', argv);
 
 switch(command) {
   case 'add':
-    notes.addNote(argv.title, argv.body);
+    var note = notes.addNote(argv.title, argv.body);
+    if(note) {
+      console.log(`Title: ${note.title}`);
+      console.log(`Body: ${note.body}`);
+      console.log('Your note has been added to notes.');
+    } else { //note === undefined
+      console.log('Note title already in use.');
+    }
     break;
   case 'list':
     notes.getAll();
