@@ -22,7 +22,11 @@ switch(command) {
     }
     break;
   case 'list':
-    notes.getAll();
+    var allNotes = notes.getAll();
+    console.log(`Printing ${allNotes.length} note(s):`);
+    allNotes.forEach((note) => {
+      console.log(`---\nTitle: ${note.title}\nBody: ${note.body}`);
+    });
     break;
   case 'read':
     var readNote = notes.getNote(argv.title);
